@@ -1,0 +1,85 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --color-bg: #0f1117;
+  --color-surface: #1a1d27;
+  --color-border: #2e3147;
+  --color-primary: #5b7cfa;
+  --color-primary-hover: #7b96ff;
+  --color-text: #e2e4f0;
+  --color-muted: #7a7e9a;
+  --color-success: #4ade80;
+  --color-error: #f87171;
+  --radius: 8px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body { background: var(--color-bg); color: var(--color-text); font-family: var(--font); }
+
+.app-shell { display: flex; flex-direction: column; min-height: 100vh; }
+
+.app-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 24px; border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.app-title { font-size: 15px; font-weight: 600; }
+.app-badge {
+  font-size: 11px; padding: 2px 8px; border-radius: 20px;
+  background: #2e3147; color: var(--color-muted); letter-spacing: 0.4px;
+}
+
+.app-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px; }
+
+.installer-screen {
+  width: 100%; max-width: 520px;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius); padding: 36px;
+}
+.installer-screen h1 { font-size: 20px; margin-bottom: 8px; }
+.installer-screen p { color: var(--color-muted); font-size: 14px; margin-bottom: 28px; }
+
+.field-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.field-group label { font-size: 13px; color: var(--color-muted); }
+
+.textura-input {
+  width: 100%; padding: 10px 14px; border-radius: var(--radius);
+  border: 1px solid var(--color-border); background: var(--color-bg);
+  color: var(--color-text); font-size: 14px; outline: none;
+  transition: border-color 0.15s;
+}
+.textura-input:focus { border-color: var(--color-primary); }
+.textura-input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.textura-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 22px; border-radius: var(--radius); border: none;
+  background: var(--color-primary); color: #fff; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: background 0.15s, opacity 0.15s; width: 100%;
+}
+.textura-button:hover:not(:disabled) { background: var(--color-primary-hover); }
+.textura-button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.textura-output {
+  margin-top: 24px; padding: 14px; border-radius: var(--radius);
+  border: 1px solid var(--color-border); background: var(--color-bg);
+  font-size: 13px; min-height: 48px;
+}
+.textura-output--idle { color: var(--color-muted); }
+.textura-output--loading { color: var(--color-muted); }
+.textura-output--success { color: var(--color-success); border-color: #166534; }
+.textura-output--error { color: var(--color-error); border-color: #7f1d1d; }
+
+.spinner {
+  display: inline-block; width: 12px; height: 12px;
+  border: 2px solid var(--color-muted); border-top-color: var(--color-primary);
+  border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 6px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.arch-note {
+  margin-top: 32px; padding: 14px; border-radius: var(--radius);
+  background: #12151f; border: 1px dashed var(--color-border);
+  font-size: 12px; color: var(--color-muted); line-height: 1.6;
+}
+.arch-note strong { color: var(--color-text); }

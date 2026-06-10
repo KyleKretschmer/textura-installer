@@ -1,0 +1,16 @@
+appId: com.textura.installer-spike
+productName: Textura Installer Spike
+directories:
+  output: dist/electron
+files:
+  - dist/renderer/**/*
+  - src/main.js
+  - src/preload.js
+  - electron/**/*.js
+  - package.json
+win:
+  target: nsis
+mac:
+  target: dmg
+linux:
+  target: AppImage
