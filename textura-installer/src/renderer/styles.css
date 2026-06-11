@@ -83,3 +83,14 @@ body { background: var(--color-bg); color: var(--color-text); font-family: var(-
   font-size: 12px; color: var(--color-muted); line-height: 1.6;
 }
 .arch-note strong { color: var(--color-text); }
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.button-group .textura-button {
+  margin-bottom: 0;
+}

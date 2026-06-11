@@ -39,6 +39,8 @@ function channelToEndpoint(channel: string): string {
   const map: Record<string, string> = {
     'installer:hello': '/api/hello',
     'installer:getStatus': '/api/status',
+    'installer:detectDotNet': '/api/dotnet/detect',
+    'installer:runDotNet': '/api/dotnet/run',
   }
   return map[channel] ?? `/${channel.replace(':', '/')}`
 }

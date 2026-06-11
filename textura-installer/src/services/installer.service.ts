@@ -1,7 +1,5 @@
 import { IpcBridge } from './ipc.bridge'
 
-// Single entry point for all UI-triggered installer actions.
-// The UI never calls the backend directly — everything flows through here.
 export class InstallerService {
   private bridge = new IpcBridge()
 
@@ -13,5 +11,15 @@ export class InstallerService {
   async getStatus(): Promise<string> {
     const response = await this.bridge.invoke<{ status: string }>('installer:getStatus', {})
     return response.status
+  }
+
+  async detectDotNet(): Promise<boolean> {
+    const response = await this.bridge.invoke<{ installed: boolean }>('installer:detectDotNet', {})
+    return response.installed
+  }
+
+  async runDotNetTest(input: string): Promise<string> {
+    const response = await this.bridge.invoke<{ output: string; exitCode: number }>('installer:runDotNet', { input })
+    return response.output
   }
 }
