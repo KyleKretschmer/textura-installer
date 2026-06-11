@@ -29,7 +29,7 @@ export function registerIpcHandlers(): void {
 
   ipcMain.handle('installer:runDotNet', (_event, payload: { input: string }) => {
     return new Promise((resolve, reject) => {
-      const exePath = path.join(__dirname, '../dotnet/TestRunner.exe')
+      const exePath = path.join(__dirname, '../dotnet/dotnetWithElectron.exe')
       const proc = spawn(exePath, [payload.input])
 
       let output = ''
